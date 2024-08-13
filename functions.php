@@ -266,8 +266,16 @@ function jobs_meta_box_html($post) {
 
  add_action('save_post', 'save_jobs_meta_box_data');
 
- /** Frontend Functionality 
-  * Displaying Job Listings
+ /** 
+  * Enqueuing bootstrap
  */
+
+ function enqueue_bootstrap() {
+	wp_enqueue_style('bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css');
+
+    wp_enqueue_script('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js', array('jquery'), null, true);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_bootstrap');
 
 

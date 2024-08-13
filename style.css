@@ -643,10 +643,14 @@ textarea {
 	margin: 15px 30px;
 }
 
-.job-listing, .job-details {
+.container .btn{
+	color: #fff;
+}
+
+/* .job-listing, .job-details {
 	margin: 0 auto;
 	width: 600px;
-}
+} */
 
 /*--------------------------------------------------------------
 # Layouts
