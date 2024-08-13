@@ -204,7 +204,7 @@ function register_jobs_post_type() {
 		'show_ui' => true,
 		'show_in_menu' => true,
 		'query_var' => true,
-		'rewrite' => array('slugs' => 'jobs'),
+		'rewrite' => array('slug' => 'jobs'),
 		'capability_type' => 'post',
 		'has_archive' => true,
 		'hierarchical' => false,
@@ -270,4 +270,4 @@ function jobs_meta_box_html($post) {
   * Displaying Job Listings
  */
 
- 
+
