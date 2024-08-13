@@ -176,3 +176,44 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/** Job Functionalities */
+
+function register_jobs_post_type() {
+	// jobs-info
+	$labels = array(
+		'name' => _x('Jobs', 'jobs-info'),
+		'singular_name' => _x('Job', 'jobs-info'),
+		'menu_name' => _x('Jobs', 'jobs-info'),
+		'name_admin_bar' => _x('Job', 'jobs-info'),
+		'add_new' => _x('Add New', 'jobs-info'),
+		'add_new_item' => __('Add New Job', 'jobs-info'),
+		'new_item' => __('New Job', 'jobs-info'),
+		'edit_item' => __('Edit Job', 'jobs-info'),
+		'view_item' => __('View Job', 'jobs-info'),
+		'all_items' => __('All Jobs', 'jobs-info'),
+		'search_items' => __('Search Jobs', 'jobs-info'),
+		'parent_item_colon' => __('Parent Jobs:', 'jobs-info'),
+		'not_found' => __('No jobs found', 'jobs-info'),
+		'not_found_in_trash' => __('No jobs found in Trash', 'jobs-info'),
+	);
+
+	$args = array (
+		'labels' => $labels,
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'query_var' => true,
+		'rewrite' => array('slugs' => 'jobs'),
+		'capability_type' => 'post',
+		'has_archive' => true,
+		'hierarchical' => false,
+		'menu_position' => 5,
+		'supports' => array('title', 'editor', 'author'),
+		'menu_icon' => 'dashicons-businessman',
+	);
+
+	register_post_type('job', $args);
+}
+
+add_action('init', 'register_jobs_post_type');
