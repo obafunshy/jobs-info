@@ -8,17 +8,18 @@ if(have_posts()):
         $salary = get_post_meta(get_the_ID(), '_salary', true);
         $location = get_post_meta(get_the_ID(), '_location', true);
 ?>
-        <div class="job-listing">
-            <h2><a href="<?php the_permalink(); ?>"><?php echo esc_html($job_title); ?></a></h2>
+        <div class="job-details">
+            <h1><?php echo esc_html($job_title); ?></h1>
             <p><strong>Salary:</strong><?php echo esc_html($salary) ?></p>
             <p><strong>Location:</strong><?php echo esc_html($location) ?></p>
-            <p><?php the_excerpt(); ?></p>
+            <div class="job-description">
+                <?php the_content(); ?>
+            </div>
         </div>
 <?php
     endwhile;
-    the_posts_navigation();
 else :
-    echo '<p>No job postings found.</p>';
+    echo '<p>No job details found.</p>';
 endif;
 
 get_footer();
