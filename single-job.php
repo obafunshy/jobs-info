@@ -1,7 +1,9 @@
 <?php 
 
 get_header();
-
+?>
+<h3 class="my-3"><a href="<?php esc_url( home_url()) ?>/jobs/" class="btn-btn-primary">Back to Job Listings</a></h3>
+<?php
 if(have_posts()): ?>
     <div class="container mt-5">
         <div class="row">
