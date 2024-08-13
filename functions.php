@@ -265,3 +265,9 @@ function jobs_meta_box_html($post) {
  }
 
  add_action('save_post', 'save_jobs_meta_box_data');
+
+ /** Frontend Functionality 
+  * Displaying Job Listings
+ */
+
+ 
