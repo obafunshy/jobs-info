@@ -209,7 +209,7 @@ function register_jobs_post_type() {
 		'has_archive' => true,
 		'hierarchical' => false,
 		'menu_position' => 5,
-		'supports' => array('title', 'editor', 'author'),
+		'supports' => array('title', 'editor', 'author', 'excerpt'),
 		'menu_icon' => 'dashicons-businessman',
 	);
 

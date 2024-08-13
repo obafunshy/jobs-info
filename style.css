@@ -637,6 +637,17 @@ textarea {
 	width: 100%;
 }
 
+/* Additional CSS to make page look better */
+
+.container {
+	margin: 15px 30px;
+}
+
+.job-listing, .job-details {
+	margin: 0 auto;
+	width: 600px;
+}
+
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
@@ -967,3 +978,5 @@ textarea {
 	margin-right: auto;
 	margin-bottom: 1.5em;
 }
+
+

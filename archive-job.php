@@ -9,9 +9,9 @@ if(have_posts()):
         $location = get_post_meta(get_the_ID(), '_location', true);
 ?>
         <div class="job-listing">
-            <h2><a href="<?php the_permalink(); ?>"><?php echo esc_html($job_title); ?></a></h2>
-            <p><strong>Salary:</strong><?php echo esc_html($salary) ?></p>
-            <p><strong>Location:</strong><?php echo esc_html($location) ?></p>
+            <h2><a href="<?php the_permalink(); ?>"> <?php echo esc_html($job_title); ?></a></h2>
+            <p><strong>Salary:</strong> <?php echo esc_html($salary) ?></p>
+            <p><strong>Location:</strong> <?php echo esc_html($location) ?></p>
             <p><?php the_excerpt(); ?></p>
         </div>
 <?php
