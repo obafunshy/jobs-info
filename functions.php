@@ -233,9 +233,9 @@ function jobs_add_meta_boxes() {
 add_action('add_meta_boxes', 'jobs_add_meta_boxes');
 
 function jobs_meta_box_html($post) {
-	$job_title = get_post_meta( $post->id, '_job_title', true );
-	$salary = get_post_meta( $post->id, '_salary', true );
-	$location = get_post_meta( $post->id, '_location', true );
+	$job_title = get_post_meta( $post->ID, '_job_title', true );
+	$salary = get_post_meta( $post->ID, '_salary', true );
+	$location = get_post_meta( $post->ID, '_location', true );
 	?>
 	<p>
 		<label for="job_title">Job Title:</label>
@@ -254,13 +254,13 @@ function jobs_meta_box_html($post) {
 
  function save_jobs_meta_box_data($post_id) {
 	if(array_key_exists('job_title', $_POST)) {
-		update_post_meta( $post_id, _job_title, sanitize_text_field( $_POST['job_title'] ));
+		update_post_meta( $post_id, '_job_title', sanitize_text_field( $_POST['job_title'] ));
 	}
 	if(array_key_exists('salary', $_POST)) {
-		update_post_meta( $post_id, _salary, sanitize_text_field( $_POST['salary'] ));
+		update_post_meta( $post_id, '_salary', sanitize_text_field( $_POST['salary'] ));
 	}
 	if(array_key_exists('location', $_POST)) {
-		update_post_meta( $post_id, _location, sanitize_text_field( $_POST['location'] ));
+		update_post_meta( $post_id, '_location', sanitize_text_field( $_POST['location'] ));
 	}
  }
 
