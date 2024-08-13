@@ -217,3 +217,51 @@ function register_jobs_post_type() {
 }
 
 add_action('init', 'register_jobs_post_type');
+
+
+/** Add custom meta boxes */
+
+function jobs_add_meta_boxes() {
+	add_meta_box(
+		'jobs_meta_box',
+		'Job Details',
+		'jobs_meta_box_html',
+		'job'
+	);
+}
+
+add_action('add_meta_boxes', 'jobs_add_meta_boxes');
+
+function jobs_meta_box_html($post) {
+	$job_title = get_post_meta( $post->id, '_job_title', true );
+	$salary = get_post_meta( $post->id, '_salary', true );
+	$location = get_post_meta( $post->id, '_location', true );
+	?>
+	<p>
+		<label for="job_title">Job Title:</label>
+		<input type="text" name="job_title" id="job_title" value="<?php echo esc_attr($job_title); ?>" />
+	</p>
+	<p>
+		<label for="salary">Salary:</label>
+		<input type="text" name="salary" id="salary" value="<?php echo esc_attr($salary); ?>" />
+	</p>
+	<p>
+		<label for="location">Location:</label>
+		<input type="text" name="location" id="location" value="<?php echo esc_attr($location); ?>" />
+	</p>
+	<?php
+ }
+
+ function save_jobs_meta_box_data($post_id) {
+	if(array_key_exists('job_title', $_POST)) {
+		update_post_meta( $post_id, _job_title, sanitize_text_field( $_POST['job_title'] ));
+	}
+	if(array_key_exists('salary', $_POST)) {
+		update_post_meta( $post_id, _salary, sanitize_text_field( $_POST['salary'] ));
+	}
+	if(array_key_exists('location', $_POST)) {
+		update_post_meta( $post_id, _location, sanitize_text_field( $_POST['location'] ));
+	}
+ }
+
+ add_action('save_post', 'save_jobs_meta_box_data');
