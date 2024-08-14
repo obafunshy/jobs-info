@@ -176,3 +176,20 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/** Job Functionalities */
+
+require get_template_directory() . '/inc/job-functions.php';
+
+ /** 
+  * Enqueuing bootstrap with bootstrap 5 CSS and jQuery CDN
+ */
+
+ function enqueue_bootstrap() {
+	wp_enqueue_style('bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css');
+
+    wp_enqueue_script('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js', array('jquery'), null, true);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_bootstrap');
+
+
