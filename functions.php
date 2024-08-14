@@ -181,7 +181,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 require get_template_directory() . '/inc/job-functions.php';
 
  /** 
-  * Enqueuing bootstrap
+  * Enqueuing bootstrap with bootstrap 5 CSS and jQuery CDN
  */
 
  function enqueue_bootstrap() {

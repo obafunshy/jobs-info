@@ -1,5 +1,5 @@
 <?php
-
+    // Define labels for the custom post type in the admin interface
     function register_jobs_post_type() {
         // jobs-info
         $labels = array(
@@ -19,10 +19,11 @@
             'not_found_in_trash' => __('No jobs found in Trash', 'jobs-info'),
         );
 
+        // Define arguments for the custom post type
         $args = array (
             'labels' => $labels,
             'public' => true,
-            'publicly_queryable' => true,
+            'publicly_queryable' => true, 
             'show_ui' => true,
             'show_in_menu' => true,
             'query_var' => true,
@@ -30,30 +31,27 @@
             'capability_type' => 'post',
             'has_archive' => true,
             'hierarchical' => false,
-            'menu_position' => 5,
-            'supports' => array('title', 'editor', 'author', 'excerpt'),
-            'menu_icon' => 'dashicons-businessman',
+            'menu_position' => 5, // position on the admin menu
+            'supports' => array('title', 'editor', 'author', 'excerpt'), // features support
+            'menu_icon' => 'dashicons-businessman', //icon for the custom post type
         );
-
+        // Register job custom post type
         register_post_type('job', $args);
 }
 
+// Hook the function to the 'init' action to register the custom post type
 add_action('init', 'register_jobs_post_type');
 
 
 /** Add custom meta boxes */
-
+// adding custom meta boxes to the 'job' post type
 function jobs_add_meta_boxes() {
-	add_meta_box(
-		'jobs_meta_box',
-		'Job Details',
-		'jobs_meta_box_html',
-		'job'
-	);
+	add_meta_box( 'jobs_meta_box', 'Job Details', 'jobs_meta_box_html', 'job'); 
 }
 
 add_action('add_meta_boxes', 'jobs_add_meta_boxes');
 
+// callback function that outputs the custom meta box
 function jobs_meta_box_html($post) {
 	$job_title = get_post_meta( $post->ID, '_job_title', true );
 	$salary = get_post_meta( $post->ID, '_salary', true );
@@ -74,6 +72,7 @@ function jobs_meta_box_html($post) {
 	<?php
  }
 
+ // function to save the custom meta box data when the post on save
  function save_jobs_meta_box_data($post_id) {
 	if(array_key_exists('job_title', $_POST)) {
 		update_post_meta( $post_id, '_job_title', sanitize_text_field( $_POST['job_title'] ));
@@ -85,5 +84,5 @@ function jobs_meta_box_html($post) {
 		update_post_meta( $post_id, '_location', sanitize_text_field( $_POST['location'] ));
 	}
  }
-
+// 'save_post' hook, function to save the custom meta box data
  add_action('save_post', 'save_jobs_meta_box_data');

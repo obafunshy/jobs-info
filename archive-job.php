@@ -8,6 +8,7 @@ if(have_posts()): ?>
         <?php 
         $counter = 1;
         while (have_posts()) : the_post();
+            // get custom meta data for each job
             $job_title = get_post_meta(get_the_ID(), '_job_title', true);
             $salary = get_post_meta(get_the_ID(), '_salary', true);
             $location = get_post_meta(get_the_ID(), '_location', true);
